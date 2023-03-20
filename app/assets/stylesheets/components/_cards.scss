@@ -2,7 +2,15 @@
   overflow: hidden;
   background: white;
   padding: 26px 12px;
+  position: relative;
+}
 
+.card_link {
+position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+width: 100%;
 }
 
 .cards > img {
@@ -32,4 +40,36 @@
   right: 16px;
   top: -20px;
   width: 40px;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: stretch;
+}
+
+.card-race {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  margin-bottom: 2rem;
+}
+
+.card__header,
+.card__content {
+  padding: 1rem;
+}
+
+.card__header h1,
+.card__content h1,
+.card__content h2,
+.card__content p {
+  margin: 0;
+}
+
+.card__image_race {
+  width: 100%;
+}
+
+.card__image {
+  width: 100%;
 }

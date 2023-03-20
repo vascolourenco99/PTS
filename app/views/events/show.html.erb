@@ -1,0 +1,23 @@
+<main style="padding: 1rem; margin-top: 2rem;">
+  <% if @event.races.nil? %>
+
+  <% else %>
+  <div class="grid">
+    <% @event.races.each do |race| %>
+      <article class="card-race product-item">
+        <div class="card__image_race">
+          <%= image_tag "patrocinios.jpg", :class => "card__image"%>
+        </div>
+        <header class="card__header">
+          <h1 class="product__title"> <%= race.name %> </h1>
+        </header>
+        <div class="card__content">
+          <h2 class="product__address"> <%= race.address %> </h2>
+          <p  class="product__description"> <%= race.date %> </p>
+        </div>
+      </article>
+      <% end %>
+    <% end %>
+  </div>
+</main>
+

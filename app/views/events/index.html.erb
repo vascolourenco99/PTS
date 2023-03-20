@@ -9,6 +9,7 @@
   <% @events.each do |event| %>
   <img src="https://www.yportal-kiosk.com/maisbenfica070319/images/images/articlefeatured_33_20200728234534.png"/>
   <div class="cards-infos">
+  <%= link_to "", "events/#{event.id}", :class => "card_link" %>
     <div>
       <h2><%= event.name %></h2>
     </div>
