@@ -2,8 +2,20 @@
  <%= image_tag "patrocinios.jpg", :class => "style_image" %>
 </div>
 
-<ul>
+
+
+
+<div class="cards">
   <% @events.each do |event| %>
-    <li><%= event.name %></li>
+  <img src="https://www.yportal-kiosk.com/maisbenfica070319/images/images/articlefeatured_33_20200728234534.png"/>
+  <div class="cards-infos">
+    <div>
+      <h2><%= event.name %></h2>
+    </div>
+    <h2 class="cards-pricing"></h2>
+    <%= image_tag "pts.jpg", :class => "cards-user avatar-bordered" %>
+  </div>
   <% end %>
-</ul>
+</div>
+
+
