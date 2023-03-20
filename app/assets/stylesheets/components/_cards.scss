@@ -1,0 +1,35 @@
+.cards {
+  overflow: hidden;
+  background: white;
+  padding: 26px 12px;
+
+}
+
+.cards > img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.cards h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+
+.cards .cards-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.cards-infos .cards-user {
+  position: absolute;
+  right: 16px;
+  top: -20px;
+  width: 40px;
+}
