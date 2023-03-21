@@ -1,8 +1,11 @@
-<main style="padding: 1rem; margin-top: 2rem;">
+<main style="padding: 1rem; margin-top: 1rem;">
   <% if @event.races.nil? %>
 
   <% else %>
   <div class="grid">
+    <div class="race-event-name">
+      <%= @event.name %>
+    </div>
     <% @event.races.each do |race| %>
       <article class="card-race product-item">
         <div class="card__image_race">

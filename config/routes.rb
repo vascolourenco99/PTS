@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     resources :races
   end
 
+  resources :review, only: [:show, :edit, :update, :destroy]
+
   resources :posts
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -1,0 +1,10 @@
+<%= form_with model: @event do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.submit %>
+<% end %>
+
+<%= link_to "Delete",
+  event_path(@event),
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+%>

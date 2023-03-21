@@ -1,0 +1,12 @@
+<h1>edit race</h1>
+<%= simple_form_for [@event, @race] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.input :date %>
+  <%= f.submit "Submit race", class: "btn btn-primary" %>
+<% end %>
+
+<%= link_to "Delete",
+  event_path(@race.event),
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+%>
