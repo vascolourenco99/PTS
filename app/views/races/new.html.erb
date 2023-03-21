@@ -1,0 +1,7 @@
+<h1>New race</h1>
+<%= simple_form_for [@event, @race] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.input :date %>
+  <%= f.submit "Submit race", class: "btn btn-primary" %>
+<% end %>

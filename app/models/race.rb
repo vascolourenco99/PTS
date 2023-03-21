@@ -3,6 +3,5 @@ class Race < ApplicationRecord
 
   validates :name, presence: true
   validates :address, presence: true
-  #validates :data, presence: true
-  # mudar o tipo de data para string
+  validates :date, presence: true
 end
