@@ -19,8 +19,13 @@
           <p  class="product__description"> <%= race.date %> </p>
         </div>
       </article>
+  <% if policy(@event).edit? %>
+  <%= link_to "Edit this event", edit_event_path(@event) %> |
+  <% end %>
+  <%= button_to "Destroy this event", @event, method: :delete if policy(@event).destroy? %>
+</main>
       <% end %>
     <% end %>
   </div>
-</main>
+
 
