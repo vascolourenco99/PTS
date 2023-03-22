@@ -1,4 +1,4 @@
-class EventPolicy < ApplicationPolicy
+class RacePolicy < ApplicationPolicy
   def show?
     true
   end

@@ -1,6 +1,7 @@
 <%= form_with model: @event do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
+  <%= f.file_field :photo %>
   <%= f.submit %>
 
 <%= link_to "Delete",

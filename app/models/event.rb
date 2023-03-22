@@ -1,6 +1,7 @@
 class Event < ApplicationRecord
   has_many :races, dependent: :destroy
-  # perguntar se meto o user belongs_to :user
+  belongs_to :user
+  has_one_attached :photo
 
 
   validates :name, presence: true
