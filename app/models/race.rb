@@ -1,7 +1,7 @@
 class Race < ApplicationRecord
   belongs_to :event
   has_one :user, through: :event
-  has_many_attached :photos
+  has_many_attached :photos, dependent: :destroy
 
   validates :name, presence: true
   validates :address, presence: true

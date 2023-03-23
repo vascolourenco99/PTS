@@ -1,11 +1,10 @@
 .banner {
-  background-size: cover;
-  background-position: center;
-  padding: 26px 12px;
+  width: 100%;
+  height: auto;
+  text-align: center;
 }
 
 .style_image {
-  width: 100%;
+  max-width: 100%;
   height: auto;
-  border-radius: 15px;
 }

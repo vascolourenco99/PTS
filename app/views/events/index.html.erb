@@ -1,24 +1,27 @@
-<div class="banner">
+<div class="banner mt-2 mb-2">
  <%= image_tag "patrocinios.jpg", :class => "style_image" %>
 </div>
 
-<% if user_signed_in? && policy(@events).new? %>
-  <%= link_to "New event", new_event_path %>
-<% end %>
+<div class="d-flex justify-content-center mt-2">
+  <% if user_signed_in? && policy(@events).new? %>
+    <%= button_to "New event", new_event_path, method: :get %>
+  <% end %>
+</div>
 
 
-<div class="cards">
+<div class="cards-container">
   <% @events.each do |event| %>
-    <% if event.photo.attached? %>
-      <%= cl_image_tag event.photo.key %>
-    <% end %>
-    <div class="cards-infos">
+    <div class="event-card">
+      <% if event.photo.attached? %>
+        <%= cl_image_tag event.photo.key, :class => "event-image" %>
+      <% end %>
       <%= link_to "", "events/#{event.id}", :class => "card_link" %>
-      <div>
+      <div class="card-info">
         <h2><%= event.name %></h2>
+        <div class="user-info">
+          <%= image_tag "pts.jpg", :class => "user_photo" %>
+        </div>
       </div>
-      <h2 class="cards-pricing"></h2>
-      <%= image_tag "pts.jpg", :class => "cards-user avatar-bordered" %>
     </div>
   <% end %>
 </div>

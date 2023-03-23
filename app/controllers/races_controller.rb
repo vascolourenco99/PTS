@@ -6,6 +6,12 @@ class RacesController < ApplicationController
     @races = @event.races.includes(:photos)
   end
 
+  def show
+    @event = Event.find(params[:event_id])
+    @race = @event.races.find(params[:id])
+    authorize @race
+  end
+
   def new 
     @event = Event.find(params[:event_id])
     @race = Race.new

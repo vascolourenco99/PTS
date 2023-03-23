@@ -1,8 +1,21 @@
-<h1>New race</h1>
-<%= simple_form_for [@event, @race] do |f| %>
-  <%= f.input :name %>
-  <%= f.input :address %>
-  <%= f.input :date %>
-  <%= f.file_field :photos %>
-  <%= f.submit "Submit race", class: "btn btn-primary" %>
-<% end %>
+<div class="simple-form">
+  <h1 class="form-label d-flex justify-content-center mt-2 mb-2 ">New race</h1>
+  <%= simple_form_for [@event, @race], html: {class: "event-form"} do |f| %>
+    <div class="form-group">
+      <%= f.input :name, label_html: {class: "form-label"}, input_html: {class: "form-control"} %>
+    </div>
+    <div class="form-group">
+      <%= f.input :address, label_html: {class: "form-label"}, input_html: {class: "form-control"} %>
+    </div>
+    <div class="form-group">
+      <%= f.input :date, label_html: {class: "form-label"}, input_html: {class: "form-control"} %>
+    </div>
+    <div class="form-group">
+      <%= f.label :photo, class: "form-label" %>
+      <%= f.file_field :photo, class: "form-control" %>
+    </div>
+    <div class="event-buttons">
+      <%= f.submit "Submit race", class: "btn edit-button" %>
+    </div>
+  <% end %>
+</div>

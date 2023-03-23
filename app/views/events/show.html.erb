@@ -1,47 +1,50 @@
 <main style="padding: 1rem; margin-top: 1rem;">
   <% if @event.races.nil? %>
-
+    <h2> No Races...</h2>
   <% else %>
-  <% if policy(@event).edit? %>
-    <%= link_to "Edit this event", edit_event_path(@event) %>
-  <% end %>
-  <% if user_signed_in? && policy(@event).new? %>
-    <%= link_to "New event", new_event_path %>
-  <% end %>
-  <%= button_to "Destroy this event", @event, method: :delete if policy(@event).destroy? %>
-
-  <% if user_signed_in? && policy(Race).create? %>
-    <%= link_to "Create a new race", new_event_race_path(@event) %>
-  <% end %>
-
-  <div class="grid">
-    <div class="race-event-name">
-      <%= @event.name %>
+    <div class="button-container">
+      <% if user_signed_in? && policy(@event).new? %>
+        <%= link_to "New event", new_event_path, class: "btn btn-light" %>
+      <% end %>
+      <% if policy(@event).edit? %>
+        <%= link_to "Edit this event", edit_event_path(@event), class: "btn btn-light" %>
+      <% end %>
+      <% if policy(@event).destroy? %>
+        <%= button_to "Destroy this event", @event, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+      <% end %>
+      <% if user_signed_in? && policy(Race).create? %>
+        <%= link_to "Create a new race", new_event_race_path(@event), class: "btn btn-light" %>
+      <% end %>
     </div>
-    <% @event.races.each do |race| %>
-      <article class="card-race product-item">
-        <div class="card__image_race">
+
+    <div class="d-flex justify-content-center mt-2 mb-2">
+      <h2 class="font-weight-bold"> <%= @event.name %> </h2>
+    </div>
+
+    <div class="race-card-container">
+      <% @event.races.each do |race| %>
+        <div class="race-card">
           <% if race.photos.attached? %>
             <% race.photos.each do |photo| %>
-              <%= cl_image_tag photo.key, class: "image-class" %>
+              <%= cl_image_tag photo.key, class: "race-image" %>
             <% end %>
           <% end %>
+        <div class="race-info">
+          <h2 class="race-title"><%= race.name %></h2>
+          <p class="race-address"> Address: <%= race.address %></p>
+          <p class="race-date"> Date: <%= race.date.strftime("%A, %B %d, %Y") %></p>
+          <div class="race-buttons-container">
+            <% if policy(race).edit? %>
+              <%= link_to "Edit this race", edit_event_race_path(@event, race.id), class: "race-button edit-button" %>
+            <% end %>
+            <%= button_to "Destroy this race", event_race_path(event_id: race.event_id, id: race.id), method: :delete, class: "race-button delete-button", data: { confirm: "Are you sure you want to delete this race?" } if policy(race).destroy? %>
+          </div>
         </div>
-        <header class="card__header">
-          <h1 class="product__title"> <%= race.name %> </h1>
-        </header>
-        <div class="card__content">
-          <h2 class="product__address"> <%= race.address %> </h2>
-          <p  class="product__description"> <%= race.date %> </p>
-        </div>
-        <% if policy(race).edit? %>
-          <%= link_to "Edit this race", edit_event_race_path(@event, race.id) %>
-        <% end %>
-        <%= button_to "Destroy this race", event_race_path(event_id: race.event_id, id: race.id), method: :delete if policy(race).destroy? %>
-      </article>
-      <% end %>
+      <%#= link_to "", event_race_path(event_id: race.event_id, id: race.id), class: "card_link" %>
+    </div>
     <% end %>
-  </div>
+    </div>
+  <% end %>
 </main>
 
 
