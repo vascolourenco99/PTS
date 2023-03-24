@@ -14,16 +14,10 @@
       <%= f.text_field :date, class: 'form-control' %>
     </div>
     <div class="form-group">
-      <%= f.label :photo, class: "form-label" %>
-      <%= f.file_field :photo, class: "form-control" %>
+      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
     </div>
     <div class="event-buttons">
       <%= f.submit "Submit race", class: "btn edit-button" %>
-      <%= link_to "Delete",
-        event_path(@race.event),
-        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
-        class: "btn btn-danger"
-      %>
     </div>
   <% end %>
 

@@ -1,6 +1,6 @@
 <div class="simple-form">
   <h1 class="form-label d-flex justify-content-center mt-2 mb-2 ">New race</h1>
-  <%= simple_form_for [@event, @race], html: {class: "event-form"} do |f| %>
+  <%= simple_form_for [@event, @race], html: {class: "event-form"},  multipart: true do |f| %>
     <div class="form-group">
       <%= f.input :name, label_html: {class: "form-label"}, input_html: {class: "form-control"} %>
     </div>
@@ -11,8 +11,7 @@
       <%= f.input :date, label_html: {class: "form-label"}, input_html: {class: "form-control"} %>
     </div>
     <div class="form-group">
-      <%= f.label :photo, class: "form-label" %>
-      <%= f.file_field :photo, class: "form-control" %>
+      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
     </div>
     <div class="event-buttons">
       <%= f.submit "Submit race", class: "btn edit-button" %>

@@ -3,6 +3,7 @@ class EventsController < ApplicationController
 
   def index
     @events = policy_scope(Event)
+    @user = current_user
   end
 
   def show 

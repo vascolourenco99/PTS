@@ -1,0 +1,55 @@
+<main style="padding: 1rem; margin-top: 1rem;">
+  <div class="d-flex justify-content-center mt-2 mb-2">
+    <h2 class="font-weight-bold"> <%= @user.first_name %> </h2>
+  </div>
+
+  <div class="row">
+    <% if @events.any? %>
+      <div class="col-md-6">
+        <div class="text-center mb-3">
+          <h3>Events</h3>
+        </div>
+        <div class="race-card-container">
+          <% @events.each do |event| %>
+            <div class="race-card">
+              <% if event.photo.attached? %>
+                <%= cl_image_tag event.photo.key, class: "race-image" %>
+              <% end %>
+              <div class="race-info">
+                <h2 class="race-title"><%= event.name %></h2>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+    <% if @races.any? %>
+      <div class="col-md-6">
+        <div class="text-center mb-3">
+          <h3>Races</h3>
+        </div>
+        <div class="race-card-container">
+          <% @races.each do |race| %>
+            <div class="race-card">
+              <% if race.photos.attached? %>
+                <% race.photos.each do |photo| %>
+                  <%= cl_image_tag photo.key, class: "race-image" %>
+                <% end %>
+              <% end %>
+              <div class="race-info">
+                <h2 class="race-title"><%= race.name %></h2>
+                <p class="race-address"> Address: <%= race.address %></p>
+                <p class="race-date"> Date: <%= race.date.strftime("%A, %B %d, %Y") %></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <% if @events.empty? && @races.empty? %>
+    <p>No events or races to show.</p>
+  <% end %>
+</main>
